@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?rds54f');
-    src:    url('fonts/icomoon.eot?rds54f#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?rds54f') format('truetype'),
-        url('fonts/icomoon.woff?rds54f') format('woff'),
-        url('fonts/icomoon.svg?rds54f#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?eel4s3');
+    src:    url('fonts/icomoon.eot?eel4s3#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?eel4s3') format('truetype'),
+        url('fonts/icomoon.woff?eel4s3') format('woff'),
+        url('fonts/icomoon.svg?eel4s3#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,6 +26,9 @@
 
 .icon-search:before {
     content: "\e604";
+}
+.icon-access_time:before {
+    content: "\e192";
 }
 .icon-old-phone:before {
     content: "\e901";

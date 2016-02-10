@@ -20,12 +20,17 @@
 }
 
 
+
 .icon-search:before {
     content: "\e604";
+}
+.icon-access_time:before {
+    content: "\e192";
 }
 .icon-old-phone:before {
     content: "\e901";
 }
+
 
 
 
@@ -95,6 +100,9 @@ html {
     padding-left: 50px;
     margin-top: 10px;
   }
+  .title {
+    @include text-shadow(0 0 5px rgba(25, 47, 109, 1));
+  }
   .desc {
     font-size: 50px;
     color: rgba(255, 255, 255, .7);
@@ -124,6 +132,9 @@ html {
         float: left;
         &.b {
           background-color: rgba(18, 18, 17, 1);
+          @include scale(1.1);
+          @include border-radius(1px);
+          
         }
       }
     }
@@ -137,9 +148,9 @@ html {
     // height: 50px;
     @include split-left(200px, 'img', '.r');
 
-    // img {
-    //   width: 
-    // }
+    img {
+      margin-top: 5px;
+    }
     .r {
       padding-left: 20px;
 
@@ -148,7 +159,7 @@ html {
         // color: rgba(25, 47, 109, 1);
         color: rgba(255, 255, 255, .8);
         padding-left: 10px;
-        margin-top: 10px;
+        margin-top: 5px;
       }
       .bar {
         margin-top: 20px;
@@ -174,14 +185,23 @@ html {
 
         }
       }
-      .phone {
-        margin-top: 15px;
-        text-align: right;
+      .info {
+        margin-top: 20px;
         color: rgba(255, 255, 255, .8);
-        font-size: 25px;
+        font-size: 23px;
+        @include split-left(50%, '.icon-access_time', '.icon-old-phone');
+        
+        .icon-old-phone {
+          text-align: right;
+        }
 
-        &:before {
-          margin-right: 10px;
+        > div {
+          @include text-shadow(0 0 5px rgba(25, 47, 109, 1));
+
+          &:before {
+            margin-right: 10px;
+            color: rgba(255, 255, 255, .6);
+          }
         }
       }
     }
