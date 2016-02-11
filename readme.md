@@ -1,5 +1,5 @@
-# Welcome To OA's F2E Framework!
-OA 個人常用的前端工具總集合！ 
+# Welcome To Apricot Tangbao!
+阿杏湯包 網頁資源
 
 ---
 ## 聲明
@@ -8,7 +8,7 @@ OA 個人常用的前端工具總集合！
 
 <br/>
 ## 簡介
-* 個人習慣工具，有興趣的參考吧！
+* 阿杏湯包 網頁資源！
 
 <br/>
 ## 關於
@@ -16,10 +16,10 @@ OA 個人常用的前端工具總集合！
 
 * E-mail - <comdan66@gmail.com>
 
-* 作品名稱 - OA's F2E Framework
+* 作品名稱 - 阿杏湯包
 
-* 最新版本 - 1.2
+* 最新版本 - 1.0
 
-* GitHub - [OA's F2E Framework](https://github.com/comdan66/oaf2e/)
+* GitHub - [阿杏湯包](https://github.com/comdan66/ApricotTangbao)
 
-* 更新日期 - 2015/05/26
+* 更新日期 - 2016/02/11
