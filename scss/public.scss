@@ -55,6 +55,7 @@ html {
     height: 100%;
     font-size: medium;
     font-family: Monaco, "微軟正黑體", "Microsoft JhengHei";
+
     background: rgba(255, 255, 255, 1);
     color: rgba(50, 50, 50, 0.8);
 
@@ -216,10 +217,10 @@ html {
   width: 842px * 3;
   height: 595px * 2;
   background-color: rgba(255, 255, 255, 1);
-  // border: 15px solid $bc;
-  // @include border-radius(10px);
+  border: 15px solid $bc;
+  @include border-radius(10px);
   // overflow: hidden;
-  @include box-shadow(0 0 10px 10px $bc);
+  // @include box-shadow(0 0 10px 10px $bc);
   
   .top {
     position: absolute;
@@ -407,22 +408,22 @@ html {
   .a3 {
     position: absolute;
     top: 595px * 2;
-    top: 0;
+    // top: 0;
     display: inline-block;
     width: 842px;
     height: 595px * 2;
 
     &:nth-child(1) {
       left: 0;
-      background-color: rgba(0, 0, 255, 0.2);
+      // background-color: rgba(0, 0, 255, 0.2);
     }
     &:nth-child(2) {
       left: 842px;
-      background-color: rgba(0, 128, 0, 0.2);
+      // background-color: rgba(0, 128, 0, 0.2);
     }
     &:nth-child(3) {
       left: 842px * 2;
-      background-color: rgba(255, 0, 0, 0.2);
+      // background-color: rgba(255, 0, 0, 0.2);
     }
   }
 }
