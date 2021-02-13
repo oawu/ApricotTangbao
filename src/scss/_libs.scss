@@ -1,0 +1,692 @@
+//
+// @author      OA Wu <comdan66@gmail.com>
+// @copyright   Copyright (c) 2015 - 2021, Lalilo
+// @license     http://opensource.org/licenses/MIT  MIT License
+// @link        https://www.ioa.tw/
+//
+
+@import "Lalilo";
+
+$linkColor: rgba(24, 144, 255, 1.00);
+
+%-icon {
+  font-family: "icon";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+}
+
+%-user-select-none {
+  @include user-select(none);
+}
+
+%-ginkgo-scrolling {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(146, 149, 153, 1.00);
+    border: 1px solid rgba(38, 43, 51, 1.00);
+    @include border-radius(4px);  
+  }
+  &::-webkit-scrollbar {
+    background-color: rgba(41, 55, 70, 1.00);
+    width: 8px;
+    @include box-shadow(inset -3px 0 3px rgba(39, 40, 34, 1.00));
+  }
+}
+
+%-ginkgo-cover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  > img {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+    @include opacity(0);
+  }
+}
+
+%-ginkgo-link {
+  color: $linkColor;
+  @include transition(color .3s);
+ 
+  &:hover {
+    color: adjust-lightness($linkColor, -10%);
+  }
+}
+
+%-ginkgo-text-input {
+  display: inline-block;
+
+  font-size: 16px;
+
+  color: rgba(72, 80, 88, 1.00);
+  border: 1px solid rgba(212, 216, 220, 1.00);
+  background-color: rgba(255, 255, 255, 1.00);
+
+  @include border-radius(4px);
+  @include transition(box-shadow .16s ease-in-out, border-color .16s ease-in-out);
+
+  @include input-placeholder {
+    font-size: 14px;
+    color: rgba(140, 141, 142, 1.00);
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: rgba(128, 189, 255, 1.00);
+    @include box-shadow(0 0 0 3px rgba(0, 123, 255, .24));
+  }
+
+  &[readonly] {
+    cursor: not-allowed;
+    color: rgba(132, 136, 138, 1.00);
+    border-color: rgb(217, 217, 217);
+    background-color: rgba(236, 236, 236, 1.00);
+    border: 1px solid rgba(202, 206, 210, 1.00);
+    @include box-shadow(none);
+  }
+}
+
+%-ginkgo-input {
+  @extend %-ginkgo-text-input;
+  padding: 0 12px;
+  height: 36px;
+  line-height: 36px;
+}
+
+%-ginkgo-textarea {
+  @extend %-ginkgo-text-input;
+  padding: 6px 12px;
+  resize: vertical;
+  &[readonly] {
+    resize: none;
+  }
+}
+
+%-ginkgo-force-hide {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  @include opacity(0);
+  @include scale(0);
+}
+
+%-ginkgo-switch {
+  // <label>
+  //   <input type='checkbox' />
+  //   <span>text</span>
+  // </label>
+
+  $height: 20px;
+  $width: 36px;
+  position: relative;
+  display: inline-block;
+
+  input {
+    @extend %-ginkgo-force-hide;
+
+    &:active + span:before {
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+    }
+    &:focus + span:before {
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(0, 123, 255, .24));
+    }
+
+    &:checked + span {
+      &:before {
+        background-color: $linkColor;
+      }
+      &:after {
+        @include transform(translateX($width - ($height - 2px * 2 + 4px)) scale(1));
+        @include box-shadow(0 1px 4px 0 rgba(0, 35, 11, .2));
+      }
+    }
+
+    &[disabled] + span {
+      cursor: not-allowed;
+
+      &:before {
+        background-color: rgba(229, 229, 229, 1.00);
+        @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.05));
+      }
+    }
+    &[disabled]:checked + span:before {
+      background-color: adjust-lightness($linkColor, 30%);
+    }
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    height: $height;
+    line-height: $height;
+    font-size: 16px;
+    padding-left: $width + 4px;
+    cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+    }
+
+    &:before {
+      left: 0;
+      top: 0;
+
+      height: 100%;
+
+      width: $width;
+      background-color: rgba(205, 205, 205, 1.00);
+      @include border-radius($height / 2);
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1));
+      @include transition(background-color .3s, box-shadow .3s);
+    }
+
+    &:after {
+      left: 2px;
+      top: 2px;
+
+      background-color: white;
+
+      width: $height - 2px * 2;
+      height: calc(100% - #{2px * 2});
+      @include opacity(1);
+      @include border-radius(50%);
+      @include box-shadow(0 1px 4px 0 rgba(0, 35, 11, .2));
+      @include transition(transform .16s ease-in-out, box-shadow .16s ease-in-out);
+    }
+  }
+}
+
+%-ginkgo-switch-2 {
+  // <label class="checked disabled loading"></label>
+
+  $height: 20px;
+  $width: 36px;
+
+  position: relative;
+  display: inline-block;
+  height: $height;
+  line-height: $height;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: $width + 4px;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+
+    height: 100%;
+
+    width: $width;
+    background-color: rgba(205, 205, 205, 1.00);
+    @include border-radius($height / 2);
+    @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1));
+    @include transition(background-color .3s, box-shadow .3s);
+  }
+
+  &:after {
+    left: 2px;
+    top: 2px;
+
+    background-color: white;
+
+    width: $height - 2px * 2;
+    height: calc(100% - #{2px * 2});
+    @include opacity(1);
+    @include border-radius(50%);
+    @include box-shadow(0 1px 4px 0 rgba(0, 35, 11, .2));
+    @include transition(transform .16s ease-in-out, box-shadow .16s ease-in-out);
+  }
+
+  &:active:before {
+    @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+  }
+
+  &.checked {
+    &:before {
+      background-color: $linkColor;
+    }
+    &:after {
+      @include transform(translateX($width - ($height - 2px * 2 + 4px)) scale(1));
+      @include box-shadow(0 1px 4px 0 rgba(0, 35, 11, .2));
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    &:before {
+      background-color: rgba(229, 229, 229, 1.00);
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.05));
+    }
+  }
+
+  &.disabled.checked:before {
+    background-color: adjust-lightness($linkColor, 30%);
+  }
+
+  &.loading {
+    cursor: not-allowed;
+    padding-left: $height + 4px;
+
+    &:before {
+      width: $height !important;
+      @include box-shadow(none);
+      @include animation(rotate 1s linear infinite forwards);
+      @include animation-delay(.75s);
+      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4ZjE5NCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzU5YjJhOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+      background-size: 100%;
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b8f194), color-stop(100%, #59b2a9));
+      background-image: -moz-linear-gradient(#b8f194 0%, #59b2a9 100%);
+      background-image: -webkit-linear-gradient(#b8f194 0%, #59b2a9 100%);
+      background-image: linear-gradient(#b8f194 0%, #59b2a9 100%);
+    }
+    &:after {
+      left: 3px;
+      top: 3px;
+      width: $height - 3px * 2;
+      height: calc(100% - #{3px * 2});
+      @include transform(scale(1));
+    }
+  }
+}
+
+%-ginkgo-checkbox {
+  // <label>
+  //   <input type='checkbox' />
+  //   <span>text</span>
+  // </label>
+
+  $height: 18px;
+  position: relative;
+  display: inline-block;
+  height: $height;
+  line-height: $height;
+
+  input {
+    @extend %-ginkgo-force-hide;
+
+    &:active + span:before {
+      border-color: $linkColor;
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+    }
+    &:focus + span:before {
+      border-color: $linkColor;
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(0, 123, 255, .24));
+    }
+
+    &:checked + span {
+      &:before {
+        border-width: 0;
+        background-color: $linkColor;
+      }
+      &:after {
+        @include opacity(1);
+        @include transform(scale(1.1) rotate(45deg) translate(-50%, -50%));
+      }
+    }
+
+    &[disabled] + span {
+      cursor: not-allowed;
+      
+      &:before {
+        border-width: 0;
+        background-color: rgba(229, 229, 229, 1.00);
+        @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.08));
+      }
+    }
+
+    &[disabled]:checked + span:before {
+      background-color: adjust-lightness($linkColor, 30%);
+    }
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    height: $height;
+    line-height: $height;
+    font-size: 16px;
+    cursor: pointer;
+    padding-left: $height + 4px;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+
+      width: $height;
+      height: 100%;
+
+      background-color: white;
+      border: 1px solid rgba(210, 210, 210, 1.00);
+
+      @include border-radius(3px);
+      @include transition(border-width .15s, background-color .3s, box-shadow .15s);
+    }
+
+    &:after {
+      top: 8.4px;
+      left: 4.8px;
+
+      width: 5px;
+      height: 8.6px;
+
+      border: 2px solid white;
+      border-top: 0;
+      border-left: 0;
+      
+      @include opacity(0);
+      @include border-bottom-right-radius(1px);
+      @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+      @include transform(scale(0) rotate(0) translate(-50%, -50%));
+      @include transition(transform .3s cubic-bezier(.12, .4, .29, 1.45), opacity .13s);
+    }
+  }
+}
+
+%-ginkgo-checkbox-2 {
+  // <label class="checked disabled loading"></label>
+  $height: 18px;
+  position: relative;
+  display: inline-block;
+  height: $height;
+  line-height: $height;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: $height + 4px;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+
+    width: $height;
+    height: 100%;
+
+    background-color: white;
+    border: 1px solid rgba(210, 210, 210, 1.00);
+
+    @include border-radius(3px);
+    @include transition(border-width .15s, background-color .3s, box-shadow .15s);
+  }
+
+  &:after {
+    top: 8.4px;
+    left: 4.8px;
+
+    width: 5px;
+    height: 8.6px;
+
+    border: 2px solid white;
+    border-top: 0;
+    border-left: 0;
+    
+    @include opacity(0);
+    @include border-bottom-right-radius(1px);
+    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+    @include transform(scale(0) rotate(0) translate(-50%, -50%));
+    @include transition(transform .3s cubic-bezier(.12, .4, .29, 1.45), opacity .13s);
+  }
+
+  &:active:before {
+    border-color: $linkColor;
+    @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+  }
+
+  &.checked {
+    &:before {
+      border-width: 0;
+      background-color: $linkColor;
+    }
+    &:after {
+      @include opacity(1);
+      @include transform(scale(1.1) rotate(45deg) translate(-50%, -50%));
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    
+    &:before {
+      border-width: 0;
+      border-color: rgba(229, 229, 229, 1.00);
+      background-color: rgba(229, 229, 229, 1.00);
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.08));
+    }
+  }
+
+  &.disabled.checked:before {
+    background-color: adjust-lightness($linkColor, 30%);
+  }
+
+  &.loading {
+    cursor: not-allowed;
+    padding-left: $height + 4px;
+    &:before {
+      border-width: 0;
+      @include box-shadow(none);
+      @include border-radius(50%);
+      @include animation(rotate 1s linear infinite forwards);
+      @include animation-delay(.75s);
+      background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4ZjE5NCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzU5YjJhOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+      background-size: 100%;
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b8f194), color-stop(100%, #59b2a9));
+      background-image: -moz-linear-gradient(#b8f194 0%, #59b2a9 100%);
+      background-image: -webkit-linear-gradient(#b8f194 0%, #59b2a9 100%);
+      background-image: linear-gradient(#b8f194 0%, #59b2a9 100%);
+    }
+    &:after {
+      left: 3px;
+      top: 3px;
+
+      background-color: white;
+
+      width: $height - 3px * 2;
+      height: calc(100% - #{3px * 2});
+
+      @include border-radius(50%);
+      @include opacity(1);
+      @include transform(scale(1) rotate(0));
+      @include box-shadow(0 1px 4px 0 rgba(0, 35, 11, .2));
+    }
+  }
+}
+
+%-ginkgo-radio {
+  // <label>
+  //   <input type='radio' />
+  //   <span>text</span>
+  // </label>
+
+  $size: 20px;
+  position: relative;
+  display: inline-block;
+
+  input {
+    @extend %-ginkgo-force-hide;
+
+    &:active + span:before {
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+    }
+
+    &:focus + span:before {
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(0, 123, 255, .24));
+    }
+
+    &:checked + span {
+      &:before {
+       border-width: 0;
+       background-color: $linkColor;
+      }
+
+      &:after {
+        @include opacity(1);
+        @include transform(scale(1.1));
+      }
+    }
+    &[disabled] + span {
+     cursor: not-allowed;
+      
+      &:before {
+        border-width: 0;
+        background-color: rgba(229, 229, 229, 1.00);
+        @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.08));
+      }
+    }
+
+    &[disabled]:checked + span:before {
+      background-color: adjust-lightness($linkColor, 30%);
+    }
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    height: $size;
+    line-height: $size;
+    font-size: 16px;
+    padding-left: $size + 4px;
+    cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      background-color: white;
+      @include border-radius(50%);
+    }
+
+    &:before {
+      left: 0;
+      top: 0;
+
+      width: $size;
+      height: $size;
+      border: 1px solid rgba(210, 210, 210, 1.00);
+
+      @include transition(border-width .15s, background-color .3s, box-shadow .15s);
+    }
+
+    &:after {
+      left: 5px;
+      top: 5px;
+
+      width: $size - 5px * 2;
+      height: $size - 5px * 2;
+      
+      @include opacity(0);
+      @include transform(scale(0));
+      @include transition(transform .3s cubic-bezier(.12, .4, .29, 1.45), opacity .13s);
+      @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.1));
+    }
+  }
+}
+
+%-ginkgo-radio-2 {
+  // <label class="checked disabled"></label>
+  $size: 20px;
+  position: relative;
+  display: inline-block;
+  height: $size;
+  line-height: $size;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: $size + 4px;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    @include border-radius(50%);
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+
+    width: $size;
+    height: $size;
+    border: 1px solid rgba(210, 210, 210, 1.00);
+
+    @include transition(border-width .15s, background-color .3s, box-shadow .15s);
+  }
+
+  &:after {
+    left: 5px;
+    top: 5px;
+
+    width: $size - 5px * 2;
+    height: $size - 5px * 2;
+    
+    @include opacity(0);
+    @include transform(scale(0));
+    @include transition(transform .3s cubic-bezier(.12, .4, .29, 1.45), opacity .13s);
+    @include box-shadow(1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.1));
+  }
+
+
+  &:active:before {
+    @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 123, 255, .36));
+  }
+
+  &.checked {
+    &:before {
+     border-width: 0;
+     background-color: $linkColor;
+    }
+
+    &:after {
+      @include opacity(1);
+      @include transform(scale(1.1));
+    }
+  }
+  &.disabled {
+   cursor: not-allowed;
+    
+    &:before {
+      border-width: 0;
+      background-color: rgba(229, 229, 229, 1.00);
+      @include box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.05), inset 0 0 1px rgba(0, 0, 0, 0.08));
+    }
+  }
+  
+  &.disabled.checked:before {
+    background-color: adjust-lightness($linkColor, 30%);
+  }
+}
+
+@include keyframes(rotate) {
+  0% { @include rotate(0); }
+  100% { @include rotate(360deg); }
+}

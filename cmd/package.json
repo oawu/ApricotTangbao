@@ -1,14 +1,47 @@
 {
-  "name": "gulp",
-  "version": "3.8.9",
-  "description": "ApricotTangbao",
-  "author": "OA Wu",
-  "email": "comdan66@gmail",
-  "devDependencies": {
-    "gulp": "^3.8.9",
-    "gulp-livereload": "^2.1.1",
-    "gulp-uglify": "^0.3.1",
-    "gulp-html-minifier": "^0.1.6",
-    "del": "^0.1.0"
+  "name": "Lalilo",
+  "version": "1.0.0",
+  "description": "用自己做出來的工具開發，就想再品嚐自己做的一道菜，美味只有自己知道。",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node Serve.js",
+    "build": "node Build.js",
+    "deploy": "node Deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comdan66/Lalilo.git"
+  },
+  "keywords": [
+    "SCSS",
+    "JavaScript",
+    "HTML"
+  ],
+  "author": {
+    "name": "OA Wu",
+    "email": "comdan66@gmail.com",
+    "url": "https://www.ioa.tw"
+  },
+  "license": "MIT",
+  "homepage": "https://www.ioa.tw/",
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@oawu/core": "git+https://github.com/comdan66/LaliloCore.git",
+    "@oawu/cli-progress": "^1.0.13",
+    "@oawu/helper": "^1.0.3",
+    "@oawu/queue": "^1.0.10",
+    "@oawu/scss": "^1.0.16",
+    "@oawu/uploader": "^1.0.8",
+    "@oawu/xterm": "^1.0.5",
+    "babel-preset-minify": "^0.5.1",
+    "chokidar": "^3.5.1",
+    "clean-css": "^4.2.3",
+    "command-exists": "^1.2.9",
+    "html-minifier": "^4.0.0",
+    "mime": "^2.5.0",
+    "node-notifier": "^9.0.0",
+    "open": "^7.3.1",
+    "socket.io": "^3.1.0"
   }
 }
