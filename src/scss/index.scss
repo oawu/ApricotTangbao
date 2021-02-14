@@ -31,20 +31,25 @@ body {
 
   background-color: rgba(255, 255, 255, 1.00);
   padding: 50px;
+  background-color: red;
 }
 
 $bc: rgba(3, 53, 129, 1.00);
-$tbw: 2 * 25px;
-$lrw: 3 * 25px;
-$h: 38 * 25px; // cm -> px
-$w: 81.4 * 25px; // cm -> px
+$tbw: 1 * 25px;
+$lrw: 1.5 * 25px;
+$h: 41 * 25px; // cm -> px
+$w: 67 * 25px; // cm -> px
 #main {
   position: relative;
   display: inline-block;
   width: $w;
   height: $h;
+  
   //  
   margin: 300px;
+  > * {
+    z-index: 3;
+  }
 
   &:before {
     content: '';
@@ -53,6 +58,7 @@ $w: 81.4 * 25px; // cm -> px
     left: 0;
     right: 0;
     bottom: 0;
+  z-index: 2;
 
     border-top: $tbw solid $bc;
     border-left: $lrw solid $bc;
@@ -63,40 +69,40 @@ $w: 81.4 * 25px; // cm -> px
 
 
 .a3 {
-  $offset: 32px;
+  $offset: 240px;
   position: absolute;
   top: 50%;
   @include transform(translate(-50%, -50%));
-  
+  z-index: 1 !important;
 
   
   
   display: inline-block;
   width: 29.7 * 25px;
   height: 42 * 25px;
-  &:nth-child(1) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% - #{29.7 * 25px} + #{$offset}); }
-  &:nth-child(2) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% + #{$offset}); }
-  &:nth-child(3) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% + #{29.7 * 25px + $offset}); }
+  &:nth-child(1) { 
+   left: calc(50% - #{29.7 * 25px} + #{$offset}); }
+  &:nth-child(2) { background-color: rgba(255, 255, 255, 1); left: calc(50% + #{$offset}); }
+  &:nth-child(3) {  left: calc(50% + #{29.7 * 25px + $offset}); }
 
 }
-$t12w: 280px;
+$t12w: 220px;
 b {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   display: inline-block;
   width: 100%;
 
   height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px;
   line-height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px;
-  font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px - 20px;
+  font-size: 60px;
   font-weight: normal;
   
   &:after {
     content: '元';
     display: inline-block;
-    margin-left: 2px;
-    font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px - 20px + 2px;
+    font-size: 60px;
     margin-top: 2px;
   }
 }
@@ -106,7 +112,7 @@ span, b:after {
 .t1, .t2 {
   position: absolute;
   right: $lrw + 10px;
-  top: $tbw + 1.5 * 25px + 10px;
+  top: $tbw + 1.5 * 25px + 70px;
   // bottom: $tbw + 1.5 * 25px;
 
   display: inline-block;
@@ -138,12 +144,12 @@ span, b:after {
     }
   }
   b {
-    bottom: -3px;
+    bottom: 50px - 3px;
     height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px;
     line-height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px;
-    font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px - 20px;
+    font-size: 74px;
     &:after {
-      font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px - 20px;
+      font-size: 74px;
       margin-top: 4px;
     }
   }
@@ -161,7 +167,7 @@ span, b:after {
 .t3, .t4, .t5, .t6, .t7, .t8, .t9 {
   position: absolute;
 
-  top: $tbw + 1.5 * 25px + 10px;
+  top: $tbw + 1.5 * 25px + 70px - 5px;
   height: $h - 2 * ($tbw + 1.5 * 25px);
   
   right: $lrw + $t12w + $t12w - 26px;
@@ -199,7 +205,7 @@ span, b:after {
     width: 100%;
     height: 182px;
     line-height: 182px;
-    font-size: 146px;
+    font-size: 130px;
     text-align: center;
   }
 }

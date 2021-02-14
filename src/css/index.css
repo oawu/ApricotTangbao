@@ -23,14 +23,18 @@ body {
   font-family: "微軟正黑體", "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
   background-color: white;
   padding: 50px;
+  background-color: red;
 }
 
 #main {
   position: relative;
   display: inline-block;
-  width: 2035px;
-  height: 950px;
+  width: 1675px;
+  height: 1025px;
   margin: 300px;
+}
+#main > * {
+  z-index: 3;
 }
 #main:before {
   content: "";
@@ -39,10 +43,11 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  border-top: 50px solid #033581;
-  border-left: 75px solid #033581;
-  border-right: 75px solid #033581;
-  border-bottom: 50px solid #033581;
+  z-index: 2;
+  border-top: 25px solid #033581;
+  border-left: 37.5px solid #033581;
+  border-right: 37.5px solid #033581;
+  border-bottom: 25px solid #033581;
 }
 
 .a3 {
@@ -53,39 +58,37 @@ body {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 1 !important;
   display: inline-block;
   width: 742.5px;
   height: 1050px;
 }
 .a3:nth-child(1) {
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  left: calc(50% - 742.5px + 32px);
+  left: calc(50% - 742.5px + 240px);
 }
 .a3:nth-child(2) {
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  left: calc(50% + 32px);
+  background-color: white;
+  left: calc(50% + 240px);
 }
 .a3:nth-child(3) {
-  border: 1px solid rgba(255, 0, 0, 0.3);
-  left: calc(50% + 774.5px);
+  left: calc(50% + 982.5px);
 }
 
 b {
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   display: inline-block;
   width: 100%;
-  height: 80px;
-  line-height: 80px;
+  height: 205px;
+  line-height: 205px;
   font-size: 60px;
   font-weight: normal;
 }
 b:after {
   content: "元";
   display: inline-block;
-  margin-left: 2px;
-  font-size: 62px;
+  font-size: 60px;
   margin-top: 2px;
 }
 
@@ -95,11 +98,11 @@ span, b:after {
 
 .t1, .t2 {
   position: absolute;
-  right: 85px;
-  top: 97.5px;
+  right: 47.5px;
+  top: 132.5px;
   display: inline-block;
-  width: 280px;
-  height: 775px;
+  width: 220px;
+  height: 900px;
 }
 .t1 span, .t2 span {
   display: inline-block;
@@ -125,13 +128,13 @@ span, b:after {
   font-size: 160px;
 }
 .t1 b, .t2 b {
-  bottom: -3px;
-  height: 89px;
-  line-height: 89px;
-  font-size: 69px;
+  bottom: 47px;
+  height: 214px;
+  line-height: 214px;
+  font-size: 74px;
 }
 .t1 b:after, .t2 b:after {
-  font-size: 69px;
+  font-size: 74px;
   margin-top: 4px;
 }
 
@@ -144,38 +147,38 @@ span, b:after {
 }
 
 .t2 {
-  right: 345px;
+  right: 247.5px;
 }
 
 .t3, .t4, .t5, .t6, .t7, .t8, .t9 {
   position: absolute;
-  top: 97.5px;
-  height: 775px;
-  right: 609px;
-  width: calc((100% - 710px) / 7);
+  top: 127.5px;
+  height: 900px;
+  right: 451.5px;
+  width: calc((100% - 515px) / 7);
 }
 .t4 {
-  right: calc((100% - 710px) / 7 + 609px);
+  right: calc((100% - 515px) / 7 + 451.5px);
 }
 
 .t5 {
-  right: calc((100% - 710px) / 7 * 2 + 609px);
+  right: calc((100% - 515px) / 7 * 2 + 451.5px);
 }
 
 .t6 {
-  right: calc((100% - 710px) / 7 * 3 + 609px);
+  right: calc((100% - 515px) / 7 * 3 + 451.5px);
 }
 
 .t7 {
-  right: calc((100% - 710px) / 7 * 4 + 609px);
+  right: calc((100% - 515px) / 7 * 4 + 451.5px);
 }
 
 .t8 {
-  right: calc((100% - 710px) / 7 * 5 + 609px);
+  right: calc((100% - 515px) / 7 * 5 + 451.5px);
 }
 
 .t9 {
-  right: calc((100% - 710px) / 7 * 6 + 609px);
+  right: calc((100% - 515px) / 7 * 6 + 451.5px);
 }
 
 .n2 span, .n3 span, .n4 span {
@@ -186,7 +189,7 @@ span, b:after {
   width: 100%;
   height: 182px;
   line-height: 182px;
-  font-size: 146px;
+  font-size: 130px;
   text-align: center;
 }
 
