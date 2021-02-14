@@ -44,15 +44,23 @@ body {
   right: 0;
   bottom: 0;
   z-index: 2;
+<<<<<<< HEAD
   border-top: 25px solid #033581;
   border-left: 37.5px solid #033581;
   border-right: 37.5px solid #033581;
   border-bottom: 25px solid #033581;
+=======
+  border-top: 50px solid #033581;
+  border-left: 75px solid #033581;
+  border-right: 75px solid #033581;
+  border-bottom: 50px solid #033581;
+>>>>>>> Fix Code.
 }
 
 .a3 {
   position: absolute;
   top: 50%;
+  z-index: 1 !important;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -64,6 +72,7 @@ body {
   height: 1050px;
 }
 .a3:nth-child(1) {
+<<<<<<< HEAD
   left: calc(50% - 742.5px + 240px);
 }
 .a3:nth-child(2) {
@@ -72,6 +81,18 @@ body {
 .a3:nth-child(3) {
   background-color: white;
   left: calc(50% + 982.5px);
+=======
+  background-color: red;
+  left: calc(50% - 742.5px + 32px);
+}
+.a3:nth-child(2) {
+  background-color: white;
+  left: calc(50% + 32px);
+}
+.a3:nth-child(3) {
+  background-color: red;
+  left: calc(50% + 774.5px);
+>>>>>>> Fix Code.
 }
 
 b {
