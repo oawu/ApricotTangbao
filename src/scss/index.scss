@@ -28,7 +28,210 @@ body {
   font-size: medium;
   text-align: center;
   font-family: "微軟正黑體", "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
-  
+
   background-color: rgba(255, 255, 255, 1.00);
+  padding: 50px;
+}
+
+$bc: rgba(3, 53, 129, 1.00);
+$tbw: 2 * 25px;
+$lrw: 3 * 25px;
+$h: 38 * 25px; // cm -> px
+$w: 81.4 * 25px; // cm -> px
+#main {
+  position: relative;
+  display: inline-block;
+  width: $w;
+  height: $h;
+  //  
+  margin: 300px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    border-top: $tbw solid $bc;
+    border-left: $lrw solid $bc;
+    border-right: $lrw solid $bc;
+    border-bottom: $tbw solid $bc;
+  }
+}
+
+
+.a3 {
+  $offset: 32px;
+  position: absolute;
+  top: 50%;
+  @include transform(translate(-50%, -50%));
+  
+
+  
+  
+  display: inline-block;
+  width: 29.7 * 25px;
+  height: 42 * 25px;
+  &:nth-child(1) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% - #{29.7 * 25px} + #{$offset}); }
+  &:nth-child(2) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% + #{$offset}); }
+  &:nth-child(3) { border: 1px solid rgba(255, 0, 0, .3); left: calc(50% + #{29.7 * 25px + $offset}); }
+
+}
+$t12w: 280px;
+b {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+
+  height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px;
+  line-height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px;
+  font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px - 20px;
+  font-weight: normal;
+  
+  &:after {
+    content: '元';
+    display: inline-block;
+    margin-left: 2px;
+    font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 25px - 20px + 2px;
+    margin-top: 2px;
+  }
+}
+span, b:after {
+  font-family: "標楷體", "Open sans", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+}
+.t1, .t2 {
+  position: absolute;
+  right: $lrw + 10px;
+  top: $tbw + 1.5 * 25px + 10px;
+  // bottom: $tbw + 1.5 * 25px;
+
+  display: inline-block;
+  width: $t12w;
+  height: $h - 2 * ($tbw + 1.5 * 25px);
+
+  span {
+    display: inline-block;
+    width: 100%;
+    height: 180px;
+    line-height: 180px;
+    font-size: 180px;
+    
+    &:nth-child(1) {
+      margin-top: 4px;
+    }
+    &:nth-child(2) {
+      margin-top: 20px;
+    }
+    &:nth-child(3) {
+      height: 130px;
+      line-height: 130px;
+      margin-top: 10px;
+      font-size: 160px;
+    }
+    &:nth-child(4) {
+      margin-top: -24px;
+      font-size: 160px;
+    }
+  }
+  b {
+    bottom: -3px;
+    height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px;
+    line-height: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px;
+    font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px - 20px;
+    &:after {
+      font-size: $h - 2 * ($tbw + 1.5 * 25px) - 180px - 180px - 180px - 130px - 16px - 20px;
+      margin-top: 4px;
+    }
+  }
+}
+.b {
+  color: rgba(0, 49, 131, 1.00);
+}
+.r {
+  color: rgba(220, 58, 57, 1.00);
+}
+
+.t2 {
+  right: $lrw + $t12w - 10px;
+}
+.t3, .t4, .t5, .t6, .t7, .t8, .t9 {
+  position: absolute;
+
+  top: $tbw + 1.5 * 25px + 10px;
+  height: $h - 2 * ($tbw + 1.5 * 25px);
+  
+  right: $lrw + $t12w + $t12w - 26px;
+  width: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7);
+  
+  b {
+
+  }
+}
+.t4 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 + #{$lrw + $t12w + $t12w - 26px});
+}
+.t5 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 * 2 + #{$lrw + $t12w + $t12w - 26px});
+}
+.t6 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 * 3 + #{$lrw + $t12w + $t12w - 26px});
+}
+.t7 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 * 4 + #{$lrw + $t12w + $t12w - 26px});
+}
+.t8 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 * 5 + #{$lrw + $t12w + $t12w - 26px});
+}
+.t9 {
+  right: calc((100% - #{$lrw * 2 + $t12w * 2}) / 7 * 6 + #{$lrw + $t12w + $t12w - 26px});
+}
+
+.n2, .n3, .n4 {
+  span {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 182px;
+    line-height: 182px;
+    font-size: 146px;
+    text-align: center;
+  }
+}
+.n2 {
+  span {
+    &:nth-child(2) {
+      top: 498px;
+    }
+  }
+}
+.n3 {
+  span {
+    &:nth-child(2) {
+      top: 243px;
+    }
+    &:nth-child(3) {
+      top: 498px;
+    }
+  }
+}
+
+.n4 {
+  span {
+    &:nth-child(2) {
+      top: 162px;
+    }
+    &:nth-child(3) {
+      top: 324px;
+    }
+    &:nth-child(4) {
+      top: 498px;
+    }
+  }
 }
 
