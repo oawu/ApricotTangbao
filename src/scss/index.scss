@@ -82,8 +82,8 @@ $w: 67 * 25px; // cm -> px
   height: 42 * 25px;
   &:nth-child(1) { 
    left: calc(50% - #{29.7 * 25px} + #{$offset}); }
-  &:nth-child(2) { background-color: rgba(255, 255, 255, 1); left: calc(50% + #{$offset}); }
-  &:nth-child(3) {  left: calc(50% + #{29.7 * 25px + $offset}); }
+  &:nth-child(2) { left: calc(50% + #{$offset}); }
+  &:nth-child(3) {  background-color: rgba(255, 255, 255, 1); left: calc(50% + #{29.7 * 25px + $offset}); }
 
 }
 $t12w: 220px;
